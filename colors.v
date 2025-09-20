@@ -68,7 +68,7 @@ pub fn (c Crayon) bg_rgb(r int, g int, b int) Crayon {
 	rgb := r.str() + ';' + g.str() + ';' + b.str()
 	return Crayon{
 		...c
-		bg: bg_colors['custom'].str() + ';2;$rgb'
+		bg: bg_colors['custom'].str() + ';2;${rgb}'
 	}
 }
 
@@ -141,6 +141,6 @@ pub fn (c Crayon) rgb(r int, g int, b int) Crayon {
 	rgb := r.str() + ';' + g.str() + ';' + b.str()
 	return Crayon{
 		...c
-		fg: fg_colors['custom'].str() + ';2;$rgb'
+		fg: fg_colors['custom'].str() + ';2;${rgb}'
 	}
 }

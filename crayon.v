@@ -47,7 +47,7 @@ pub fn (c Crayon) str() string {
 	params += styles
 	params += 'm'
 
-	format := '$params{text}'
+	format := '${params}{text}'
 	mut output := []string{}
 	for i, text in c.text {
 		if text.starts_with('\e') {
