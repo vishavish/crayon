@@ -130,7 +130,7 @@ Strip the styles from a text (Globally available)
 */
 pub fn strip_text(text string) string {
 	start_index := text.index('\e[') or { return text }
-	end_index := text.index_after('m', start_index) + 1
+	end_index := text.index_after('m', start_index) or { 0 } + 1 
 
 	if start_index >= 0 && end_index >= 0 {
 		return strip_text(text.replace(text[start_index..end_index], ''))

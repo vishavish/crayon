@@ -3,8 +3,8 @@ module crayon
 import strconv
 
 fn parse(text string, index int) string {
-	start_index := text.index_after('{', index)
-	mut end_index := text.index_after('}', start_index)
+	start_index := text.index_after('{', index) or { 0 }
+	mut end_index := text.index_after('}', start_index) or { 0 }
 	if start_index >= 0 && end_index > 0 {
 		count := num_of_chars(text[end_index..text.len], `}`)
 		if count > 1 {
@@ -50,7 +50,7 @@ fn parse(text string, index int) string {
 				return text
 			}
 		}
-		next_index := text.index_last(reset) or {
+		next_index := text.last_index(reset) or {
 			return parse(text.replace(text[start_index..end_index + 1], c.str()), -1)
 		}
 		return parse(text.replace(text[start_index..end_index + 1], c.str()), next_index)
